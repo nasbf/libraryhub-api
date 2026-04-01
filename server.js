@@ -8,7 +8,7 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use ('/', require('./routes'));
 app.get('/', (req, res) => {
-  res.send('This is our Libraryhub API (Bridger/Alexandra')
+  res.send('This is our Libraryhub API (Bridger/Alexandra)')
 });
 
 
