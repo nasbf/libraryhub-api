@@ -30,6 +30,17 @@ const createUser = async (req, res) => {
   }
 };
 
+const getById = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // replace this with your actual DB logic
+    res.status(200).json({ message: `Get user with ID: ${id}` });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 const updateUser = async (req, res) => {
     
@@ -86,6 +97,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
     getAll,
+    getById,
     createUser,
     updateUser,
     deleteUser
