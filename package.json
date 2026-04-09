@@ -22,7 +22,16 @@
   "dependencies": {
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+<<<<<<< Updated upstream
     "mongoose": "^9.3.3"
+=======
+    "express-session": "^1.19.0",
+    "mongoose": "^9.3.3",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
