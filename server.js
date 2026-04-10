@@ -33,11 +33,16 @@ mongoose.connect(process.env.MONGODB_URL)
   .then(() => {
     console.log('Connected to MongoDB with Mongoose');
 
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
+    if (process.env.NODE_ENV !== 'test') {
+      app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+      });
+    }
 
   })
   .catch((error) => {
     console.error('Connection error:', error);
   });
+
+
+module.exports = app;
