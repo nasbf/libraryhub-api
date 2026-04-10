@@ -3,12 +3,23 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
+const session = require('express-session');
+const passport = require('passport');
+require('./config/passport');
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-
 app.use(express.json());
+
+app.use(session({
+  secret: 'secretkey',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
