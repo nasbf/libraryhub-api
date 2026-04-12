@@ -9,9 +9,14 @@ router.get('/google',
 // Callback
 router.get('/google/callback',
   passport.authenticate('google', {
-    successRedirect: '/',
     failureRedirect: '/'
-  })
+  }),
+  (req, res) => {
+    res.json({
+      message: 'Login successful',
+      user: req.user
+    });
+  }
 );
 
 // Logout
