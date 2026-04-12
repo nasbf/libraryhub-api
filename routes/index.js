@@ -5,5 +5,6 @@ const router = express.Router();
 router.use('/users', require('./users'));
 router.use('/reservations', require('./reservations'));
 router.use('/auth', require ('./oauth'));
+router.use('/rentals', require('./rentals'));
 
 module.exports = router;
