@@ -24,7 +24,7 @@ app.use ('/', require('./routes'));
 app.get('/', (req, res) => {
   res.send('This is our Libraryhub API (Bridger/Alexandra)')
 });
-app.use('/auth', require('./routes/auth'));
+
 
 mongoose.connect(process.env.MONGODB_URL)
   .then(() => {
