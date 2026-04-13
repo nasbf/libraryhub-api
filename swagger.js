@@ -10,7 +10,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:8080'
+        url: 'https://libraryhub-api.onrender.com'
       }
     ]
   },
