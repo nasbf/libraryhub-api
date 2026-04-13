@@ -16,7 +16,9 @@ const getById = async (req, res) => {
 const createRental = async (req, res) => {
   const rental = new Rental(req.body);
   const data = await rental.save();
-  res.status(201).json(data);
+  res.status(201).json({
+    message: 'Rental created succesfully',
+    data: data});
 };
 
 // PUT
@@ -26,13 +28,15 @@ const updateRental = async (req, res) => {
     req.body,
     { new: true }
   );
-  res.status(200).json(data);
+  res.status(200).json({
+    message: 'Rental updated succesfully',
+    data: data});
 };
 
 // DELETE
 const deleteRental = async (req, res) => {
   await Rental.findByIdAndDelete(req.params.id);
-  res.status(200).json({ message: 'Deleted' });
+  res.status(200).json({ message: 'Rental Deleted' });
 };
 
 module.exports = {
