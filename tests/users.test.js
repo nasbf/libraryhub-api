@@ -10,32 +10,31 @@ describe('Users API', () => {
     expect(Array.isArray(res.body)).toBe(true);
   });
 
+  it('GET /users/:id should return one user', async () => {
+  
+    const newUser = {
+    name: "Test User",
+    email: `test${Date.now()}@test.com`
+  };
+
+    const createRes = await request(app)
+    .post('/users')
+    .send(newUser);
+
+    console.log(createRes.body);
+    const userId = createRes.body.data._id;
+
+
+    const res = await request(app).get(`/users/${userId}`);
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('_id', userId);
+  });
 });
+
 
 afterAll(async () => {
   const mongoose = require('mongoose');
   await mongoose.connection.close();
 });
 
-it('GET /users/:id should return one user', async () => {
-  // 1. Crear usuario primero
-  const newUser = {
-    name: "Test User",
-    email: `test${Date.now()}@test.com`
-  };
-
-
-  
-  const createRes = await request(app)
-    .post('/users')
-    .send(newUser);
-
-  console.log(createRes.body);
-  const userId = createRes.body.data._id;
-
-  // 2. Buscar ese usuario
-  const res = await request(app).get(`/users/${userId}`);
-
-  expect(res.statusCode).toBe(200);
-  expect(res.body).toHaveProperty('_id', userId);
-});
